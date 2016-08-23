@@ -17,14 +17,14 @@ class Scanner
     protected $urls;
 
     /**
-     * @var \Guzzle\Http\Client
+     * @var \GuzzleHttp\Client
      */
     protected $httpClient;
 
     public function __construct(array $urls)
     {
         $this->urls = $urls;
-        $this->httpClient = new \Guzzle\Http\Client();
+        $this->httpClient = new \GuzzleHttp\Client();
     }
 
 
@@ -54,10 +54,9 @@ class Scanner
 
     }
 
-    protected function getStatusCodeForUrl($url) {
-        $httpRequest = $this->httpClient->get($url);
-
-        $httpResponse = $this->httpClient->send($httpRequest);
+    protected function getStatusCodeForUrl($url)
+    {
+        $httpResponse = $this->httpClient->get($url);
 
         return $httpResponse->getStatusCode();
 
